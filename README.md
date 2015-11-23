@@ -10,6 +10,16 @@ Inspired by:
 - MongoDB's Aggregation Pipeline: https://docs.mongodb.org/manual/core/aggregation-pipeline/
 - async's auto: https://github.com/caolan/async#autotasks-concurrency-callback
 
+### Features
+
+- Machine readable and writable
+  - It is written in JSON!
+- All functions are Node Machines
+- Generates the dependencies automatically
+  - Syntax clearly shows which functions are called and which Machinepacks are required
+- Generates API documentation automatially
+  - Node Machines have expected inputs and this can be used to infer the expected inputs for this machine
+
 ## Example
 
 ### How many GitHub repositories do I have?

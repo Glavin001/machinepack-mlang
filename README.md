@@ -1,102 +1,31 @@
-# auto-machine
-> Generate code from JSON, representing complex tasks and their requirements using Machinepacks
 
----
+<h1>
+  <a href="http://node-machine.org" title="Node-Machine public registry"><img alt="node-machine logo" title="Node-Machine Project" src="http://node-machine.org/images/machine-anthropomorph-for-white-bg.png" width="50" /></a>
+  machinepack-automachine
+</h1>
 
-## About
+### [Docs](http://node-machine.org/machinepack-automachine) &nbsp; [Browse other machines](http://node-machine.org/machinepacks) &nbsp;  [FAQ](http://node-machine.org/implementing/FAQ)  &nbsp;  [Newsgroup](https://groups.google.com/forum/?hl=en#!forum/node-machine)
 
-Inspired by:
-- Node Machine: http://node-machine.org/
-- MongoDB's Aggregation Pipeline: https://docs.mongodb.org/manual/core/aggregation-pipeline/
-- async's auto: https://github.com/caolan/async#autotasks-concurrency-callback
+Generate code from JSON, representing complex tasks and their requirements using Machinepacks
 
-### Features
 
-- Machine readable and writable
-  - It is written in JSON!
-- All functions are Node Machines
-- Generates the dependencies automatically
-  - Syntax clearly shows which functions are called and which Machinepacks are required
-- Generates API documentation automatially
-  - Node Machines have expected inputs and this can be used to infer the expected inputs for this machine
+## Installation &nbsp; [![NPM version](https://badge.fury.io/js/machinepack-automachine.svg)](http://badge.fury.io/js/machinepack-automachine) [![Build Status](https://travis-ci.org/mikermcneil/machinepack-automachine.png?branch=master)](https://travis-ci.org/mikermcneil/machinepack-automachine)
 
-## Example
-
-### How many GitHub repositories do I have?
-
-#### Query
-
-````javascript
-{
-  Repos: {
-    “$Github.listRepos”: {
-      owner: “$context.username”
-    }
-  },
-  Count: {
-		“$Arrays.length”: {
-			array: “$Repos”
-		}
-	},
-  Results: {
-	  count: “$Count”
-  }
-}
+```sh
+$ npm install machinepack-automachine
 ```
 
-#### Code
+## Usage
 
-```javascript
-async.auto({
-    __context: function(cb) {
-        return cb(null, {
-            username: "Glavin001"
-        });
-    },
-    __packs: function(cb) {
-        var packNames = [‘arrays’, ‘github’]
-        var packs = {};
-        _.each(packNames, function(name) {
-            packs[name] = require(‘machinepack - ’ +name);
-        });
-        return cb(null, packs);
-    },
-    Followers: [‘__context’, ‘__packs’, function(context, packs, cb) {
-        // Get context variables
-        var username = context.username;
-        // Get pack
-        var Github = packs[‘github’];
-        var data = {
-            owner: username
-        };
-        Github.listRepos(data).exec({
-            error: function(error) {
-                cb(error);
-            },
-            success: function(repos) {
-                cb(null, repos);
-            }
-        });
-    }],
-    Count: [‘__packs’, ‘Followers’, function(packs, followers, cb) {
-        // Get pack
-        var Arrays = packs[‘arrays’];
-        Arrays.length({
-            array: followers
-        }).exec({
-            error: function(error) {
-                cb(error);
-            },
-            success: function(count) {
-                cb(null, count);
-            }
-        });
-    }]
-}, function(error, results) {
-    if (error) {
-        reject(error);
-    } else {
-        resolve(results.Count);
-    }
-});
-```
+For the latest usage documentation, version information, and test status of this module, see <a href="http://node-machine.org/machinepack-automachine" title="Generate code from JSON, representing complex tasks and their requirements using Machinepacks (for node.js)">http://node-machine.org/machinepack-automachine</a>.  The generated manpages for each machine contain a complete reference of all expected inputs, possible exit states, and example return values.  If you need more help, or find a bug, jump into [Gitter](https://gitter.im/node-machine/general) or leave a message in the project [newsgroup](https://groups.google.com/forum/?hl=en#!forum/node-machine).
+
+## About  &nbsp; [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/node-machine/general?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+This is a [machinepack](http://node-machine.org/machinepacks), an NPM module which exposes a set of related Node.js [machines](http://node-machine.org/spec/machine) according to the [machinepack specification](http://node-machine.org/spec/machinepack).
+Documentation pages for the machines contained in this module (as well as all other NPM-hosted machines for Node.js) are automatically generated and kept up-to-date on the <a href="http://node-machine.org" title="Public machine registry for Node.js">public registry</a>.
+Learn more at <a href="http://node-machine.org/implementing/FAQ" title="Machine Project FAQ (for implementors)">http://node-machine.org/implementing/FAQ</a>.
+
+## License
+
+MIT &copy; 2015 contributors
+

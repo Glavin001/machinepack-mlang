@@ -1,0 +1,34 @@
+{
+  "machine": "meta",
+  "expectations": [{
+    "using": {
+      "program": {}
+    },
+    "outcome": "success",
+    "returns": {
+      "dependencies": [],
+      "methods": [],
+      "variables": {}
+    }
+  }, {
+    "using": {
+      "program": {
+        "$Arrays.length": {
+          "array": {
+            "$Github.listRepos": {
+              "owner": "$username"
+            }
+          }
+        }
+      }
+    },
+    "outcome": "success",
+    "returns": {
+      "dependencies": ["GitHub", "Arrays"],
+      "methods": ["Github.listRepos", "Arrays.length"],
+      "variables": {
+        "username": "Glavin001"
+      }
+    }
+  }]
+}

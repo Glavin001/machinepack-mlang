@@ -1,0 +1,9 @@
+{
+  "$Arrays.length": {
+    "array": {
+      "$Github.listRepos": {
+        "owner": "$username"
+      }
+    }
+  }
+}

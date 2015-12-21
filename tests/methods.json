@@ -1,0 +1,24 @@
+{
+  "machine": "methods",
+  "expectations": [{
+    "using": {
+      "program": {}
+    },
+    "outcome": "success",
+    "returns": []
+  }, {
+    "using": {
+      "program": {
+        "$Arrays.length": {
+          "array": {
+            "$Github.listRepos": {
+              "owner": "$username"
+            }
+          }
+        }
+      }
+    },
+    "outcome": "success",
+    "returns": ["Arrays.length", "GitHub.listRepos"]
+  }]
+}

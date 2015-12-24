@@ -14,9 +14,12 @@
   "license": "MIT",
   "dependencies": {
     "lodash": "^3.10.1",
-    "machine": "^10.0.0"
+    "machine": "^10.0.0",
+    "machinepack-npm": "^5.1.0"
   },
   "devDependencies": {
+    "machinepack-arrays": "^5.2.0",
+    "machinepack-github": "^4.2.0",
     "test-machinepack-mocha": "^2.0.0"
   },
   "machinepack": {

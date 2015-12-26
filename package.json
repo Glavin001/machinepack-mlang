@@ -13,6 +13,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "bluebird": "^3.1.1",
     "lodash": "^3.10.1",
     "machine": "^10.0.0",
     "machinepack-npm": "^5.1.0"

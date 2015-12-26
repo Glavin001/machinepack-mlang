@@ -1,14 +1,18 @@
 {
-  "name": "machinepack-automachine",
+  "name": "machinepack-mlang",
   "version": "0.1.0",
-  "description": "Generate code from JSON, representing complex tasks and their requirements using Machinepacks",
+  "description": "Declarative programming language written in JSON and powered by Machinepacks",
   "scripts": {
     "test": "node ./node_modules/test-machinepack-mocha/bin/testmachinepack-mocha.js"
   },
   "keywords": [
     "Auto-Machine",
     "machines",
-    "machinepack"
+    "machinepack",
+    "json",
+    "declarative",
+    "programming",
+    "language"
   ],
   "author": "",
   "license": "MIT",

@@ -1,23 +1,22 @@
 
 <h1>
   <a href="http://node-machine.org" title="Node-Machine public registry"><img alt="node-machine logo" title="Node-Machine Project" src="http://node-machine.org/images/machine-anthropomorph-for-white-bg.png" width="50" /></a>
-  machinepack-automachine
+  machinepack-mlang
 </h1>
 
-### [Docs](http://node-machine.org/machinepack-automachine) &nbsp; [Browse other machines](http://node-machine.org/machinepacks) &nbsp;  [FAQ](http://node-machine.org/implementing/FAQ)  &nbsp;  [Newsgroup](https://groups.google.com/forum/?hl=en#!forum/node-machine)
+### [Docs](http://node-machine.org/machinepack-mlang) &nbsp; [Browse other machines](http://node-machine.org/machinepacks) &nbsp;  [FAQ](http://node-machine.org/implementing/FAQ)  &nbsp;  [Newsgroup](https://groups.google.com/forum/?hl=en#!forum/node-machine)
 
-Generate code from JSON, representing complex tasks and their requirements using Machinepacks
+[Declarative](http://latentflip.com/imperative-vs-declarative/) programming language written in JSON and powered by Machinepacks.
 
-
-## Installation &nbsp; [![NPM version](https://badge.fury.io/js/machinepack-automachine.svg)](http://badge.fury.io/js/machinepack-automachine) [![Build Status](https://travis-ci.org/Glavin001/auto-machine.svg?branch=master)](https://travis-ci.org/Glavin001/auto-machine)
+## Installation &nbsp; [![NPM version](https://badge.fury.io/js/machinepack-mlang.svg)](http://badge.fury.io/js/machinepack-mlang) [![Build Status](https://travis-ci.org/Glavin001/auto-machine.svg?branch=master)](https://travis-ci.org/Glavin001/auto-machine)
 
 ```sh
-$ npm install machinepack-automachine
+$ npm install machinepack-mlang
 ```
 
 ## Usage
 
-For the latest usage documentation, version information, and test status of this module, see <a href="http://node-machine.org/machinepack-automachine" title="Generate code from JSON, representing complex tasks and their requirements using Machinepacks (for node.js)">http://node-machine.org/machinepack-automachine</a>.  The generated manpages for each machine contain a complete reference of all expected inputs, possible exit states, and example return values.  If you need more help, or find a bug, jump into [Gitter](https://gitter.im/node-machine/general) or leave a message in the project [newsgroup](https://groups.google.com/forum/?hl=en#!forum/node-machine).
+For the latest usage documentation, version information, and test status of this module, see <a href="http://node-machine.org/machinepack-mlang" title="Generate code from JSON, representing complex tasks and their requirements using Machinepacks (for node.js)">http://node-machine.org/machinepack-mlang</a>.  The generated manpages for each machine contain a complete reference of all expected inputs, possible exit states, and example return values.  If you need more help, or find a bug, jump into [Gitter](https://gitter.im/node-machine/general) or leave a message in the project [newsgroup](https://groups.google.com/forum/?hl=en#!forum/node-machine).
 
 ## About  &nbsp; [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/node-machine/general?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -27,5 +26,5 @@ Learn more at <a href="http://node-machine.org/implementing/FAQ" title="Machine 
 
 ## License
 
-MIT &copy; 2015 contributors
+MIT &copy; 2015 Glavin Wiechert
 

@@ -6,6 +6,8 @@
 
 ### [Docs](http://node-machine.org/machinepack-mlang) &nbsp; [Browse other machines](http://node-machine.org/machinepacks) &nbsp;  [FAQ](http://node-machine.org/implementing/FAQ)  &nbsp;  [Newsgroup](https://groups.google.com/forum/?hl=en#!forum/node-machine)
 
+[![Join the chat at https://gitter.im/Glavin001/machinepack-mlang](https://badges.gitter.im/Glavin001/machinepack-mlang.svg)](https://gitter.im/Glavin001/machinepack-mlang?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [Declarative](http://latentflip.com/imperative-vs-declarative/) programming language written in JSON and powered by Machinepacks.
 
 ## Installation &nbsp; [![NPM version](https://badge.fury.io/js/machinepack-mlang.svg)](http://badge.fury.io/js/machinepack-mlang) [![Build Status](https://travis-ci.org/Glavin001/auto-machine.svg?branch=master)](https://travis-ci.org/Glavin001/auto-machine)

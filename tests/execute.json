@@ -1,62 +1,106 @@
 {
   "machine": "execute",
   "expectations": [{
-      "using": {
-        "program": {
-          "$Math.add": {
-            "a": 2,
-            "b": 2
+    "using": {
+      "program": {
+        "$Math.add": {
+          "a": 2,
+          "b": 2
+        }
+      }
+    },
+    "outcome": "success",
+    "returns": 4
+  }, {
+    "using": {
+      "program": {
+        "$Arrays.length": {
+          "array": [1, 2, 3, 4, 5]
+        }
+      }
+    },
+    "outcome": "success",
+    "returns": 5
+  }, {
+    "using": {
+      "program": {
+        "$Arrays.length": {
+          "array": {
+            "$Github.listRepos": {
+              "owner": "$username"
+            }
           }
         }
       },
-      "outcome": "success",
-      "returns": 4
-    }, {
-      "using": {
-        "program": {
-          "$Arrays.length": {
-            "array": [1, 2, 3, 4, 5]
-          }
+      "inputs": {
+        "username": "Glavin001"
+      }
+    },
+    "outcome": "success",
+    "returns": 30
+  }, {
+    "using": {
+      "program": {
+        "$Dictionaries.dot": {
+          "dictionary": {
+            "$Github.getUserDetails": {
+              "user": "$username"
+            }
+          },
+          "keypath": "numFollowers"
         }
       },
-      "outcome": "success",
-      "returns": 5
-    }, {
-      "using": {
-        "program": {
-          "$Arrays.length": {
-            "array": {
-              "$Github.listRepos": {
-                "owner": "$username"
+      "inputs": {
+        "username": "Glavin001"
+      }
+    },
+    "outcome": "success",
+    "returns": 160
+  }, {
+    "using": {
+      "program": {
+        "$IfThen.ifEqual": {
+          "a": "$x",
+          "b": 0,
+          "@success": 0,
+          "@otherwise": {
+            "$IfThen.ifEqual": {
+              "a": "$x",
+              "b": 1,
+              "@success": 1,
+              "@otherwise": {
+                "$Math.add": {
+                  "a": {
+                    "$this": {
+                      "x": {
+                        "$Math.subtract": {
+                          "a": "$x",
+                          "b": 1
+                        }
+                      }
+                    }
+                  },
+                  "b": {
+                    "$this": {
+                      "x": {
+                        "$Math.subtract": {
+                          "a": "$x",
+                          "b": 2
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           }
-        },
-        "inputs": {
-          "username": "Glavin001"
         }
       },
-      "outcome": "success",
-      "returns": 30
-    }, {
-      "using": {
-        "program": {
-          "$Dictionaries.dot": {
-            "dictionary": {
-              "$Github.getUserDetails": {
-                "user": "$username"
-              }
-            },
-            "keypath": "numFollowers"
-          }
-        },
-        "inputs": {
-          "username": "Glavin001"
-        }
-      },
-      "outcome": "success",
-      "returns": 160
-    }
-
-  ]
+      "inputs": {
+        "x": "6"
+      }
+    },
+    "outcome": "success",
+    "returns": 8
+  }]
 }

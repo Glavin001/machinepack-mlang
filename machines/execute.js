@@ -35,7 +35,7 @@ module.exports = {
     var Promise = require('bluebird');
     var _ = require('lodash');
     var meta = require('machine').build(require('./meta'));
-    // Promisify the methods
+    var execute = require('machine').build(require('./execute'));
 
     /**
      * Module Dependencies
@@ -56,9 +56,20 @@ module.exports = {
       var depNames = results.dependencies;
       var deps = {};
       _.forEach(depNames, function(depName) {
-        var fullDepName = 'machinepack-'+depName.toLowerCase();
-        var dep = require(fullDepName);
-        _.set(deps, depName, dep);
+        var lowerDepName = depName.toLowerCase();
+        if (lowerDepName === 'this') {
+          var programFn = function(inputs) {
+            return execute({
+              program: program,
+              inputs: inputs
+            });
+          };
+          _.set(deps, 'this', programFn);
+        } else {
+          var fullDepName = 'machinepack-'+lowerDepName;
+          var dep = require(fullDepName);
+          _.set(deps, depName, dep);
+        }
       });
 
       /*
@@ -99,10 +110,15 @@ module.exports = {
         return _.pick(data, keys);
       }
       function getMethodExits(program, method) {
-        var data = _.get(program, method);
+        var data = _.get(program, '$'+method);
         var keys = _.keys(data);
         keys = _.filter(keys, isMethodExit);
-        return _.pick(data, keys);
+        var exits = _.pick(data, keys);
+        // console.log('getMethodExits exits', exits);
+        return _.mapKeys(exits, function(value, key) {
+          // console.log('key', key);
+          return key.substr(1); // Remove "$" prefix
+        });
       }
       function isVariable(program) {
         if (typeof program === 'string') {
@@ -112,6 +128,9 @@ module.exports = {
         }
         return false;
       }
+      function getMethodFn(method) {
+        return _.get(deps, method)
+      }
       var promisifyProgram = function(program) {
         // console.log('promisifyProgram', typeof program, program);
         if (!_.isPlainObject(program)) {
@@ -119,10 +138,10 @@ module.exports = {
           if (isVariable(program)) {
             var varName = program.substr(1); // remove "$" prefix
             // Extract variable from input data
-            return _.get(data, varName);
+            return Promise.resolve(_.get(data, varName));
           }
           // simple value
-          return program;
+          return Promise.resolve(program);
         }
         // Check if machine call
         var method = getMachineMethod(program);
@@ -137,21 +156,32 @@ module.exports = {
           // console.log('inputs after', inputs);
           // Exits
           var exits = getMethodExits(program, method);
-          // Promisify exits
-          exits = _.mapValues(exits, promisifyProgram);
 
           // Wait for Inputs to resolve
           return Promise.props(inputs)
           .then(function(inputs) {
             // Call machine method with resolved inputs
-            var methodFn = _.get(deps, method);
+            var methodFn = getMethodFn(method);
+            if (typeof methodFn !== 'function') {
+              return Promise.reject(new Error('Method with name '+method+' is not a function: '+methodFn));
+            }
             return new Promise(function (resolve, reject) {
               // FIXME: exits
-              var exits = {
+              var defaultExits = {
                 error: reject,
                 success: resolve
               };
-              return methodFn(inputs).exec(exits);
+              var finalExits = defaultExits;
+              // Promisify exits
+              function promisifyExits(exit) {
+                return function() {
+                  return promisifyProgram(exit).then(resolve).catch(reject);
+                }
+              }
+              exits = _.mapValues(exits, promisifyExits);
+              _.merge(finalExits, exits);
+              // console.log('exits', finalExits);
+              return methodFn(inputs).exec(finalExits);
             });
           });
         } else {

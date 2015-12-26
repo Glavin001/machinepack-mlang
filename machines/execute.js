@@ -64,6 +64,10 @@ module.exports = {
               inputs: inputs
             });
           };
+          //
+          programFn.inputs = execute.inputs;
+          programFn.exits = execute.exits;
+          // Cache
           _.set(deps, 'this', programFn);
         } else {
           var fullDepName = 'machinepack-'+lowerDepName;
@@ -166,12 +170,18 @@ module.exports = {
               return Promise.reject(new Error('Method with name '+method+' is not a function: '+methodFn));
             }
             return new Promise(function (resolve, reject) {
-              // FIXME: exits
-              var defaultExits = {
-                error: reject,
-                success: resolve
-              };
-              var finalExits = defaultExits;
+              var defaultExits = {};
+              // Default successful exit
+              var defaultExit = methodFn.defaultExit || 'success';
+              _.set(defaultExits, defaultExit, resolve);
+              // Reject all other exits
+              var exitsDef = methodFn.exits || {};
+              _.forIn(exitsDef, function(value, key) {
+                if (key !== defaultExit) {
+                  _.set(defaultExits, key, reject);
+                }
+              });
+              // console.log('exitsDef', method, exitsDef, defaultExits, methodFn);
               // Promisify exits
               function promisifyExits(exit) {
                 return function() {
@@ -179,6 +189,7 @@ module.exports = {
                 }
               }
               exits = _.mapValues(exits, promisifyExits);
+              var finalExits = defaultExits;
               _.merge(finalExits, exits);
               // console.log('exits', finalExits);
               return methodFn(inputs).exec(finalExits);

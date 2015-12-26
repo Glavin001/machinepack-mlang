@@ -14,6 +14,20 @@
   }, {
     "using": {
       "program": {
+        "$Math.add": {
+          "a": "$x",
+          "b": 1
+        }
+      },
+      "inputs": {
+        "x": 2
+      }
+    },
+    "outcome": "success",
+    "returns": 3
+  }, {
+    "using": {
+      "program": {
         "$Arrays.length": {
           "array": [1, 2, 3, 4, 5]
         }

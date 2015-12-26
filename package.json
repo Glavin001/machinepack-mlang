@@ -6,7 +6,7 @@
     "test": "node ./node_modules/test-machinepack-mocha/bin/testmachinepack-mocha.js"
   },
   "keywords": [
-    "Auto-Machine",
+    "mlang",
     "machines",
     "machinepack",
     "json",
@@ -16,7 +16,8 @@
   ],
   "author": {
     "name": "Glavin Wiechert",
-    "email": "glavin.wiechert@gmail.com"
+    "email": "glavin.wiechert@gmail.com",
+    "url": "https://github.com/Glavin001"
   },
   "repository": {
     "type": "git",
@@ -48,7 +49,7 @@
     "test-machinepack-mocha": "^2.0.0"
   },
   "machinepack": {
-    "friendlyName": "Auto-Machine",
+    "friendlyName": "Mlang",
     "machineDir": "machines/",
     "machines": [
       "execute",

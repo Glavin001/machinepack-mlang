@@ -2,18 +2,15 @@ module.exports = {
 
   friendlyName: 'Extract Dependencies',
 
-  description: 'Extract dependencies from machlang',
+  description: 'Extract dependencies from MLang program',
 
-  extendedDescription: 'This example machine is part of machinepack-boilerplate, used to introduce everyone to machines.',
+  extendedDescription: 'Extract dependencies from MLang program.',
 
   inputs: {
 
     program: {
-
       example: {},
-
-      description: 'The name of the person that will be sent the hello message.',
-
+      description: 'The MLang program',
       required: true
     }
 
@@ -28,8 +25,10 @@ module.exports = {
     },
 
     success: {
-      example: ['GitHub', 'something else']
+      example: ['Arrays', 'GitHub'],
+      description: 'The dependencies of the MLang program.'
     }
+
   },
 
   fn: function(inputs, exits) {

@@ -2,20 +2,21 @@ module.exports = {
 
   friendlyName: 'Execute Program',
 
-  description: 'Execute machlang program',
+  description: 'Execute MLang program',
 
-  extendedDescription: 'This example machine is part of machinepack-boilerplate, used to introduce everyone to machines.',
+  extendedDescription: 'Execute MLang program',
 
   inputs: {
 
     program: {
       example: {},
-      description: 'The name of the person that will be sent the hello message.',
+      description: 'The MLang program',
       required: true
     },
 
     inputs: {
       example: {},
+      description: 'Inputs to the MLang program',
       required: false
     }
 
@@ -28,6 +29,7 @@ module.exports = {
       description: 'An unexpected error occurred.'
     },
     success: {
+      description: 'The result of the MLang program'
     }
   },
 
@@ -133,7 +135,7 @@ module.exports = {
         return false;
       }
       function getMethodFn(method) {
-        return _.get(deps, method)
+        return _.get(deps, method);
       }
       var promisifyProgram = function(program) {
         // console.log('promisifyProgram', typeof program, program);
@@ -186,7 +188,7 @@ module.exports = {
               function promisifyExits(exit) {
                 return function() {
                   return promisifyProgram(exit).then(resolve).catch(reject);
-                }
+                };
               }
               exits = _.mapValues(exits, promisifyExits);
               var finalExits = defaultExits;

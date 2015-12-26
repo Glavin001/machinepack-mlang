@@ -1,0 +1,62 @@
+{
+  "machine": "execute",
+  "expectations": [{
+      "using": {
+        "program": {
+          "$Math.add": {
+            "a": 2,
+            "b": 2
+          }
+        }
+      },
+      "outcome": "success",
+      "returns": 4
+    }, {
+      "using": {
+        "program": {
+          "$Arrays.length": {
+            "array": [1, 2, 3, 4, 5]
+          }
+        }
+      },
+      "outcome": "success",
+      "returns": 5
+    }, {
+      "using": {
+        "program": {
+          "$Arrays.length": {
+            "array": {
+              "$Github.listRepos": {
+                "owner": "$username"
+              }
+            }
+          }
+        },
+        "inputs": {
+          "username": "Glavin001"
+        }
+      },
+      "outcome": "success",
+      "returns": 30
+    }, {
+      "using": {
+        "program": {
+          "$Dictionaries.dot": {
+            "dictionary": {
+              "$Github.getUserDetails": {
+                "user": "$username"
+              }
+            },
+            "keypath": "numFollowers"
+          }
+        },
+        "inputs": {
+          "username": "Glavin001"
+        }
+      },
+      "outcome": "success",
+      "returns": 160
+    }
+
+  ]
+}

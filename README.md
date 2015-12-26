@@ -9,7 +9,7 @@
 Generate code from JSON, representing complex tasks and their requirements using Machinepacks
 
 
-## Installation &nbsp; [![NPM version](https://badge.fury.io/js/machinepack-automachine.svg)](http://badge.fury.io/js/machinepack-automachine) [![Build Status](https://travis-ci.org/mikermcneil/machinepack-automachine.png?branch=master)](https://travis-ci.org/mikermcneil/machinepack-automachine)
+## Installation &nbsp; [![NPM version](https://badge.fury.io/js/machinepack-automachine.svg)](http://badge.fury.io/js/machinepack-automachine) [![Build Status](https://travis-ci.org/Glavin001/auto-machine.svg?branch=master)](https://travis-ci.org/Glavin001/auto-machine)
 
 ```sh
 $ npm install machinepack-automachine

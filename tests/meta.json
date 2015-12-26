@@ -30,5 +30,54 @@
         "username": "Glavin001"
       }
     }
+  }, {
+    "using": {
+      "program": {
+        "$IfThen.isEqual": {
+          "a": "$x",
+          "b": 0,
+          "@success": 0,
+          "@otherwise": {
+            "$IfThen.isEqual": {
+              "a": "$x",
+              "b": 1,
+              "@success": 1,
+              "@otherwise": {
+                "$Math.add": {
+                  "a": {
+                    "$this": {
+                      "x": {
+                        "$Math.subtract": {
+                          "a": "$x",
+                          "b": 1
+                        }
+                      }
+                    }
+                  },
+                  "b": {
+                    "$this": {
+                      "x": {
+                        "$Math.subtract": {
+                          "a": "$x",
+                          "b": 2
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "outcome": "success",
+    "returns": {
+      "dependencies": ["GitHub", "Arrays"],
+      "methods": ["Github.listRepos", "Arrays.length"],
+      "variables": {
+        "username": "Glavin001"
+      }
+    }
   }]
 }

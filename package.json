@@ -1,6 +1,6 @@
 {
   "name": "machinepack-mlang",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Declarative programming language written in JSON and powered by Machinepacks",
   "scripts": {
     "test": "node ./node_modules/test-machinepack-mocha/bin/testmachinepack-mocha.js"

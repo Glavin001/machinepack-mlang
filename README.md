@@ -8,7 +8,7 @@
 
 [Declarative](http://latentflip.com/imperative-vs-declarative/) programming language written in JSON and powered by [Machinepacks](http://node-machine.org/machinepacks).
 
-## Installation &nbsp; [![NPM version](https://badge.fury.io/js/machinepack-mlang.svg)](http://badge.fury.io/js/machinepack-mlang) [![Build Status](https://travis-ci.org/Glavin001/auto-machine.svg?branch=master)](https://travis-ci.org/Glavin001/auto-machine)
+## Installation &nbsp; [![NPM version](https://badge.fury.io/js/machinepack-mlang.svg)](http://badge.fury.io/js/machinepack-mlang) [![Build Status](https://travis-ci.org/Glavin001/machinepack-mlang.svg?branch=master)](https://travis-ci.org/Glavin001/machinepack-mlang)
 
 ```sh
 $ npm install machinepack-mlang
